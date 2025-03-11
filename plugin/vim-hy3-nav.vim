@@ -1,13 +1,13 @@
-" vim-hypr-nav.vim -- Use hyprland's focus direction bindings to move between vim
+" vim-hy3-nav.vim -- Use hyprland's plugin hy3 focus direction bindings to move between vim
 " splits as well. Requires the accompanying helper script.
 "
 " Shamlessly hacked from https://git.sr.ht/~jcc/vim-sway-nav
 
 let clientserver = has("nvim") || has("clientserver")
-if exists("g:loaded_vim_hypr_nav") || empty($HYPRLAND_INSTANCE_SIGNATURE) || !clientserver
+if exists("g:loaded_vim_hy3_nav") || empty($HYPRLAND_INSTANCE_SIGNATURE) || !clientserver
     finish
 endif
-let g:loaded_vim_hypr_nav = 1
+let g:loaded_vim_hy3_nav = 1
 
 function s:setup()
     " Ensure we are running a server.
@@ -17,13 +17,13 @@ function s:setup()
 
     " Create a file so the helper script knows how to send a command.
     let runtime_dir = empty($XDG_RUNTIME_DIR) ? "/tmp" : $XDG_RUNTIME_DIR
-    let s:servername_file = runtime_dir . "/vim-hypr-nav." . getpid() . ".servername"
+    let s:servername_file = runtime_dir . "/vim-hy3-nav." . getpid() . ".servername"
     let program = has("nvim") ? "nvim" : "vim"
     call writefile([program . " " . v:servername], s:servername_file)
 endfunction
 
 " Schedule setup and cleanup.
-augroup vim_hypr_nav
+augroup vim_hy3_nav
     autocmd!
     autocmd VimEnter * call s:setup()
     autocmd VimLeavePre * call delete(s:servername_file)

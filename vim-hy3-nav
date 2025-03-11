@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# vim-hypr-nav - Use the same bindings to move focus between hyprland windows
+# vim-hy3-nav - Use the same bindings to move focus between hyprland windows
 # and vim splits. Requires the accompanying vim plugin and jq.
 
 dir="$1"
@@ -42,7 +42,7 @@ get_descendant_vim_pid() {
 if focused_pid="$(hyprctl activewindow -j | jq -e '.pid')"; then
     terms="$(find /dev/pts -type c -not -name ptmx | sed s#^/dev/## | tr '\n' ,)"
     if vim_pid="$(get_descendant_vim_pid "$focused_pid" "$terms")"; then
-        servername_file="${XDG_RUNTIME_DIR:-/tmp}/vim-hypr-nav.$vim_pid.servername"
+        servername_file="${XDG_RUNTIME_DIR:-/tmp}/vim-hy3-nav.$vim_pid.servername"
         read -r program servername <"$servername_file"
 
         if [ "$program" = vim ]; then
