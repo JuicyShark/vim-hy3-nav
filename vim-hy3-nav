@@ -59,4 +59,4 @@ if focused_pid="$(hyprctl activewindow -j | jq -e '.pid')"; then
     fi
 fi
 
-hyprctl dispatch "hy3:movefocus, $dir, visible"
+hyprctl dispatch "hy3:movefocus $dir, visible"
