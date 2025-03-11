@@ -46,7 +46,7 @@ endif
 function VimHyprNav(dir)
     let l:dir_flag = get({"l": "h", "d": "j", "u": "k", "r": "l"}, a:dir)
     if winnr(l:dir_flag) == winnr()
-        call s:job(["hyprctl", "dispatch", "movefocus", a:dir])
+        call s:job(["hyprctl", "dispatch", "hy3:movefocus,", a:dir, ",visible"])
     else
         execute "wincmd " . l:dir_flag
     endif
